@@ -85,10 +85,11 @@ To set up the PostgreSQL database, follow these steps:
    Example:
    ```
    DATABASE_URL = "postgresql://your_username:your_password@localhost/your_dbname"
+    ```
 
-```
 3. **Initialize the Database**:
    Run the following command to initialize the database and create the tables:
+
    ```
    python app/main.py
    ```
@@ -99,6 +100,7 @@ To set up the PostgreSQL database, follow these steps:
 
 5. **Verify the Database**:
    - You can open **pgAdmin4** and verify that the tables have been successfully created.
+
 ```
 ### Run the FastAPI Application
 Start the FastAPI server by running:
@@ -137,5 +139,6 @@ Makes predictions using the trained model based on the energy production provide
 ## Testing
 
 You can test the API using the Swagger UI at **`http://127.0.0.1:8000/docs`**, or with tools like **Postman**.
+=======
 
 

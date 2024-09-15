@@ -6,3 +6,4 @@ pickle
 sqlalchemy
 psycopg2
 matplotlib
+fastapi

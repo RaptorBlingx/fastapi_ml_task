@@ -100,5 +100,42 @@ To set up the PostgreSQL database, follow these steps:
 5. **Verify the Database**:
    - You can open **pgAdmin4** and verify that the tables have been successfully created.
 ```
+### Run the FastAPI Application
+Start the FastAPI server by running:
+
+```
+uvicorn app.main:app --reload
+```
+
+You can access the API documentation and test the endpoints at **`http://127.0.0.1:8000/docs`**.
+
+## API Endpoints
+
+### 1. `/upload-data` (POST)
+Uploads a CSV file containing energy data and stores it in the PostgreSQL database.
+
+- **Request**: Upload a CSV file with columns `Entity`, `Year`, `Primary energy consumption per capita (kWh/person)`, and `Renewable energy share in the total final energy consumption (%)`.
+
+### 2. `/get-data/{country}` (GET)
+Retrieves energy data for a specific country from the PostgreSQL database.
+
+- **Parameters**: `country` - The name of the country (e.g., "Afghanistan").
+
+### 3. `/train-model` (POST)
+Trains an XGBoost model using the uploaded energy data and saves the trained model.
+
+- **Response**: Confirms that the model was successfully trained and saved.
+
+### 4. `/predict` (POST)
+Makes predictions using the trained model based on the energy production provided.
+
+- **Parameters**: 
+  - `energy_production`: The amount of energy production (numeric value e.g., "5000").
+  
+- **Response**: Returns the predicted value for the renewable energy share.
+
+## Testing
+
+You can test the API using the Swagger UI at **`http://127.0.0.1:8000/docs`**, or with tools like **Postman**.
 
 

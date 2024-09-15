@@ -5,18 +5,6 @@ This repository contains a project to develop a machine learning model based on 
 ## Project Structure
 ```
 FastAPI_ML_Task/
-│
-├── data/                          # Folder to store the dataset
-│   └── global-data-on-sustainable-energy.csv
-├── models/                        # Folder to store model files and notebooks
-│   ├── model_training.ipynb       # Jupyter notebook for the ML workflow
-│   └── trained_model.pkl          # Placeholder for the trained model (to be created later)
-├── scripts/                       # Python scripts for different stages of the pipeline
-├── app/                           # Folder for FastAPI application (to be added later)
-├── requirements.txt               # List of Python dependencies
-├── README.md                      # Project documentation
-└── .gitignore                     # Git ignore file
-```
 
 ## Setup Instructions
 
@@ -47,12 +35,18 @@ FastAPI_ML_Task/
 │   └── global-data-on-sustainable-energy.csv
 ├── models/                        # Folder to store model files and notebooks
 │   ├── model_training.ipynb       # Jupyter notebook for the ML workflow
-│   └── trained_model.pkl          # Placeholder for the trained model (to be created later)
-├── scripts/                       # Python scripts for different stages of the pipeline
-├── app/                           # Folder for FastAPI application (to be added later)
+│   ├── trained_model.pkl          # Initial trained model
+│   ├── tuned_model.pkl            # Tuned XGBoost model
+│   └── model_utils.py             # Utility functions for model training
+├── app/                           # Folder for FastAPI application
+│   ├── main.py                    # Main FastAPI application with endpoints
+│   ├── database_setup.py          # Database setup and connection management
+├── Dockerfile                     # Dockerfile for building the FastAPI container
+├── docker-compose.yml             # Docker Compose file to orchestrate FastAPI and PostgreSQL services
 ├── requirements.txt               # List of Python dependencies
 ├── README.md                      # Project documentation
-└── .gitignore                     # Git ignore file
+└── .gitignore                     # Git ignore file to avoid committing sensitive files (like .env)
+
 ```
 
 ## Setup Instructions

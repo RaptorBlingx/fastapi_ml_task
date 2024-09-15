@@ -139,4 +139,3 @@ Makes predictions using the trained model based on the energy production provide
 ## Testing
 
 You can test the API using the Swagger UI at **`http://127.0.0.1:8000/docs`**, or with tools like **Postman**.
-=======

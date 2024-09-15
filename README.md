@@ -101,7 +101,7 @@ To set up the PostgreSQL database, follow these steps:
 5. **Verify the Database**:
    - You can open **pgAdmin4** and verify that the tables have been successfully created.
 
-```
+
 ### Run the FastAPI Application
 Start the FastAPI server by running:
 

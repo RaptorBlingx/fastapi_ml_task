@@ -100,6 +100,41 @@ To set up the PostgreSQL database, follow these steps:
 
 5. **Verify the Database**:
    - You can open **pgAdmin4** and verify that the tables have been successfully created.
+  
+---
+
+## Setting Up the Environment Variables
+
+You will need to create a `.env` file in the root directory of this project.
+
+### Steps to Set Up `.env`:
+
+1. **Create a `.env` file**:
+   - In the root of the project (where the `docker-compose.yml` file is located), create a new file named `.env`.
+
+2. **Add the following content** to the `.env` file:
+   ```
+   POSTGRES_USER=your_postgres_username
+   POSTGRES_PASSWORD=your_postgres_password
+   POSTGRES_DB=your_database_name
+   ```
+
+   - Replace `your_postgres_username`, `your_postgres_password`, and `your_database_name` with your actual PostgreSQL credentials. For example:
+
+   ```
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=your_secure_password
+   POSTGRES_DB=ml_api
+   ```
+
+3. **Database URL**:
+   - The environment variables in the `.env` file will be used to automatically configure the database connection inside the **`docker-compose.yml`** and **`app/database_setup.py`**.
+   - The database connection string will look like this:
+     ```
+     postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+     ```
+
+---
 
 
 ### Run the FastAPI Application

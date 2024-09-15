@@ -46,7 +46,6 @@ FastAPI_ML_Task/
 ├── requirements.txt               # List of Python dependencies
 ├── README.md                      # Project documentation
 └── .gitignore                     # Git ignore file to avoid committing sensitive files (like .env)
-
 ```
 
 ## Setup Instructions

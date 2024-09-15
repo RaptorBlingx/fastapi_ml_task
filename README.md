@@ -3,7 +3,7 @@
 This repository contains a project to develop a machine learning model based on sustainable energy data and integrate it with a FastAPI-based REST API.
 
 ## Project Structure
-```
+
 FastAPI_ML_Task/
 
 ## Setup Instructions

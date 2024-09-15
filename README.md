@@ -100,9 +100,44 @@ To set up the PostgreSQL database, follow these steps:
 
 5. **Verify the Database**:
    - You can open **pgAdmin4** and verify that the tables have been successfully created.
+  
+---
+
+## Setting Up the Environment Variables
+
+You will need to create a `.env` file in the root directory of this project.
+
+### Steps to Set Up `.env`:
+
+1. **Create a `.env` file**:
+   - In the root of the project (where the `docker-compose.yml` file is located), create a new file named `.env`.
+
+2. **Add the following content** to the `.env` file:
+   ```
+   POSTGRES_USER=your_postgres_username
+   POSTGRES_PASSWORD=your_postgres_password
+   POSTGRES_DB=your_database_name
+   ```
+
+   - Replace `your_postgres_username`, `your_postgres_password`, and `your_database_name` with your actual PostgreSQL credentials. For example:
+
+   ```
+   POSTGRES_USER=postgres
+   POSTGRES_PASSWORD=your_secure_password
+   POSTGRES_DB=ml_api
+   ```
+
+3. **Database URL**:
+   - The environment variables in the `.env` file will be used to automatically configure the database connection inside the **`docker-compose.yml`** and **`app/database_setup.py`**.
+   - The database connection string will look like this:
+     ```
+     postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+     ```
+
+---
 
 
-## Run the FastAPI Application
+### Run the FastAPI Application
 Start the FastAPI server by running:
 
 ```
@@ -139,3 +174,59 @@ Makes predictions using the trained model based on the energy production provide
 ## Testing
 
 You can test the API using the Swagger UI at **`http://127.0.0.1:8000/docs`**, or with tools like **Postman**.
+=======
+
+
+## Running the Project with Docker
+
+To run the FastAPI application and PostgreSQL database using Docker, follow these steps:
+
+### Prerequisites
+
+- Ensure Docker and Docker Compose are installed on your machine.
+
+### Steps:
+
+1. **Build the Docker containers**:
+   ```
+   docker-compose build
+   ```
+
+2. **Start the services** (FastAPI and PostgreSQL):
+   ```
+   docker-compose up
+   ```
+
+   This will start both the FastAPI application and PostgreSQL database.
+
+3. **Access the API**:
+   - The FastAPI application will be available at **`http://localhost:8000`**.
+   - The API documentation (Swagger UI) will be available at **`http://localhost:8000/docs`**.
+
+4. **Interacting with the API**:
+   - **Upload Data**: Use the `/upload-data` endpoint to upload the dataset (CSV file).
+   - **Train the Model**: Call the `/train-model` endpoint to train the XGBoost model.
+   - **Make Predictions**: Use the `/predict` endpoint to make predictions based on the trained model.
+   - **Retrieve Data**: Fetch energy data for a specific country via the `/get-data/{country}` endpoint.
+
+5. **Stopping the Docker services**:
+   ```
+   docker-compose down
+   ```
+
+   This will stop and remove the containers.
+
+### Setting Up the Environment Variables
+
+- The environment variables (like PostgreSQL credentials) are configured in the `.env` file. Each user should create a `.env` file in the root directory with the following content:
+
+```
+POSTGRES_USER=your_postgres_username
+POSTGRES_PASSWORD=your_postgres_password
+POSTGRES_DB=ml_api
+```
+
+- Replace `your_postgres_username` and `your_postgres_password` with your actual PostgreSQL credentials.
+
+
+

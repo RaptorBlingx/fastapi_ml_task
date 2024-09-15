@@ -2,8 +2,9 @@ pandas
 scikit-learn
 xgboost
 seaborn
-pickle
 sqlalchemy
-psycopg2
+psycopg2-binary
 matplotlib
 fastapi
+uvicorn
+python-multipart

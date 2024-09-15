@@ -1,12 +1,16 @@
 from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
 # Define the base class for SQLAlchemy models
 Base = declarative_base()
 
-# Database connection URL (replace with your own PostgreSQL credentials)
-DATABASE_URL = "postgresql://postgres:raptorblingx@localhost/ml_api"
+# Retrieve the DATABASE_URL from the environment variables
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise ValueError("DATABASE_URL is not set in the environment variables.")
 
 # Create the PostgreSQL engine
 engine = create_engine(DATABASE_URL)

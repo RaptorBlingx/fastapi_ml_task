@@ -4,6 +4,8 @@ from app.database_setup import engine, EnergyData, Predictions, SessionLocal, in
 import pandas as pd
 import pickle
 from models.model_utils import train_model  # Import your custom train_model function
+from math import isfinite
+
 
 # Initialize FastAPI
 app = FastAPI()
@@ -48,7 +50,21 @@ async def get_data(country: str, db: Session = Depends(get_db)):
     data = db.query(EnergyData).filter(EnergyData.country == country).all()
     if not data:
         return {"message": "No data found for this country"}
-    return data
+
+    # Convert data to a dictionary and ensure no invalid float values (e.g., NaN or infinity)
+    cleaned_data = []
+    for record in data:
+        record_dict = {
+            "id": record.id,
+            "country": record.country,
+            "year": record.year,
+            "energy_production": None if record.energy_production is None or not isfinite(record.energy_production) else record.energy_production,
+            "renewables_percentage": None if record.renewables_percentage is None or not isfinite(record.renewables_percentage) else record.renewables_percentage,
+        }
+        cleaned_data.append(record_dict)
+
+    return cleaned_data
+
 
 # Endpoint: Train the model using the uploaded data
 @app.post("/train-model")

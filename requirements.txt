@@ -3,3 +3,6 @@ scikit-learn
 xgboost
 seaborn
 pickle
+sqlalchemy
+psycopg2
+matplotlib
